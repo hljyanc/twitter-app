@@ -1,14 +1,28 @@
 import {
-  Button, Dialog, Form, Input,
+  Button, Form, Input, Dialog,
 } from 'antd-mobile';
+import { loginService } from '../../services/login';
 import './index.css';
+
+const initialValues = {
+  username: 'test',
+  password: 'test',
+};
 
 const Login = () => {
   const [form] = Form.useForm();
-  const onSubmit = () => {
+
+  const onSubmit = async () => {
     const values = form.getFieldsValue();
+    const res = await loginService(values.username, values.password);
+    if (res && res.length > 0) {
+      Dialog.alert({
+        content: 'Login success',
+      });
+      return;
+    }
     Dialog.alert({
-      content: JSON.stringify(values),
+      content: 'Login failed',
     });
   };
   return (
@@ -16,10 +30,11 @@ const Login = () => {
       <Form
         layout="horizontal"
         mode="card"
-        from={form}
+        form={form}
+        initialValues={initialValues}
         footer={(
           <Button block color="primary" onClick={onSubmit} size="large">
-            登录
+            Log in
           </Button>
           )}
       >
