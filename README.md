@@ -25,4 +25,8 @@ json-server
 
 ## Five Steps to build React pages
 1. Divide UI design into components
-2. Use React to build a static page  
+2. Use React to build a static page 
+
+## 工程化配置信息:
+- craco.config.js: webpack setup alias
+- jsconfig.json: for vscode to use relevant setting
