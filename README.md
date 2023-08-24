@@ -14,11 +14,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-## 发送接口
+## send request
 request: get post put patch delete
 service: const getUser = (params) => get('/user', params).then((res) => {
     return res;
 });
 
-## 后端的一个web服务
+## web service
 json-server
+
+## Five Steps to build React pages
+1. Divide UI design into components
+2. Use React to build a static page  

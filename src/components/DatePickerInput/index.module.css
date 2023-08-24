@@ -1,0 +1,21 @@
+@value twitterBlue #1d9bf0;
+@value twitterGray #86818c;
+
+.birthdayInput {
+    composes: input className from '../../common.module.css';
+    margin-top: 10px;
+}
+.calendarIcon {
+    height: 20px;
+    float: right;
+}
+
+.birthdayPlaceholder {
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+.calendarTitleItem {
+    color: twitterBlue;
+}
