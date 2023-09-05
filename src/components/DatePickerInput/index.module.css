@@ -4,6 +4,7 @@
 .birthdayInput {
     composes: input className from '../../common.module.css';
     margin-top: 10px;
+    height: 60px !important;
 }
 .calendarIcon {
     height: 20px;
