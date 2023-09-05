@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import style from './index.module.css';
+import style from './index.module.scss';
 import calendarIcon from '../../assets/calendar.png';
 
 /**
@@ -24,7 +24,7 @@ const DatePickerInput = ({
         onClose={() => setVisible(false)}
         onConfirm={(val) => {
           // Toast.show(val.toDateString());
-          onChange(val);
+          onChange(moment(val).format('YYYYMMDD'));
         }}
       />
       <div className={style.birthdayInput} onClick={onClickDatePicker}>
