@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Button, Form, Input } from 'antd-mobile';
+import { Button, Form } from 'antd-mobile';
 import DatePickerInput from '@components/DatePickerInput';
-import Header from '../../components/Header';
+import Header from '@components/Header';
+import TInput from '@components/TInput';
 
 import style from './index.module.scss';
 
@@ -47,7 +48,7 @@ const Register = () => {
               message: '名字不能为空',
             }]}
           >
-            <Input placeholder="username" className={style.input} />
+            <TInput label="名字" length={50} />
           </Form.Item>
           { accountType === ACCOUNT_TYPE.PHONE
             && (
@@ -58,7 +59,7 @@ const Register = () => {
                 message: '手机不能为空',
               }]}
             >
-              <Input placeholder="phone" className={style.input} />
+              <TInput label="手机" length={11} />
             </Form.Item>
             ) }
           { accountType === ACCOUNT_TYPE.EMAIL
@@ -70,7 +71,7 @@ const Register = () => {
               message: '邮箱不能为空',
             }]}
           >
-            <Input placeholder="email" className={style.input} />
+            <TInput label="邮箱" length={200} />
           </Form.Item>
           ) }
           <div className={style.changeTypeButton} onClick={onAccountTypeChange}>

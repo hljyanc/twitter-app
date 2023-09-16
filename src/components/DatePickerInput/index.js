@@ -23,7 +23,6 @@ const DatePickerInput = ({
         visible={visible}
         onClose={() => setVisible(false)}
         onConfirm={(val) => {
-          // Toast.show(val.toDateString());
           onChange(moment(val).format('YYYYMMDD'));
         }}
       />
@@ -39,8 +38,13 @@ const DatePickerInput = ({
 };
 
 DatePickerInput.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+DatePickerInput.defaultProps = {
+  value: '',
+  onChange: () => {},
 };
 
 export default DatePickerInput;
