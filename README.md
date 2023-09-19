@@ -27,6 +27,8 @@ json-server
 1. Divide UI design into components
 2. Use React to build a static page 
 3. decide UI states to use
+4. decide where to put each state
+5. 添加反向数据流
 
 ## 工程化配置信息:
 - craco.config.js: webpack setup alias

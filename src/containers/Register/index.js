@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Button, Form } from 'antd-mobile';
+import { Form } from 'antd-mobile';
 import DatePickerInput from '@components/DatePickerInput';
 import Header from '@components/Header';
 import TInput from '@components/TInput';
 
 import style from './index.module.scss';
+import Footer from './components/Footer';
 
 const ACCOUNT_TYPE = {
   PHONE: 'PHONE',
@@ -14,12 +15,13 @@ const ACCOUNT_TYPE = {
 const Register = () => {
   const [form] = Form.useForm();
   const [formData] = useState({
-    name: '1234',
+    name: '',
     phone: '',
     email: '',
-    birthday: '20220223',
+    birthday: '',
   });
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.PHONE);
+  const [footerButtonDisabled, setFooterButtonDisabled] = useState(true);
 
   const onAccountTypeChange = () => {
     if (accountType === ACCOUNT_TYPE.PHONE) {
@@ -35,12 +37,32 @@ const Register = () => {
       console.log(validate);
     }
   };
+
+  const onValuesChange = async () => {
+    try {
+      const validate = await form.validateFields();
+      if (validate) {
+        setFooterButtonDisabled(false);
+      }
+    } catch (e) {
+      if (e.errorFields.length === 0) {
+        setFooterButtonDisabled(false);
+        return;
+      }
+      setFooterButtonDisabled(true);
+    }
+  };
   return (
     <div>
       <Header />
       <div className={style.form}>
         <div className={style.formTitle}>创建你的账号</div>
-        <Form form={form} initialValues={formData} className={style.formContainer}>
+        <Form
+          form={form}
+          initialValues={formData}
+          onValuesChange={onValuesChange}
+          className={style.formContainer}
+        >
           <Form.Item
             name="name"
             rules={[{
@@ -56,7 +78,8 @@ const Register = () => {
               name="phone"
               rules={[{
                 required: true,
-                message: '手机不能为空',
+                message: '需要一个有效手机号',
+                pattern: /^1(3\d|4[5-9]|5[0-35-9]|6[2567]|7[0-8]|8\d|9[0-35-9])\d{8}$/g,
               }]}
             >
               <TInput label="手机" length={11} />
@@ -68,15 +91,16 @@ const Register = () => {
             name="email"
             rules={[{
               required: true,
-              message: '邮箱不能为空',
+              message: '需要一个有效邮箱',
+              pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/g,
             }]}
           >
-            <TInput label="邮箱" length={200} />
+            <TInput label="邮箱" />
           </Form.Item>
           ) }
-          <div className={style.changeTypeButton} onClick={onAccountTypeChange}>
+          <span className={style.changeTypeButton} onClick={onAccountTypeChange}>
             { accountType === ACCOUNT_TYPE.PHONE ? '改用电子邮件' : '改用手机号码' }
-          </div>
+          </span>
           <div className={style.birthdayTitle}>出生日期</div>
           <div>这不会公开显示,确认你自己的年龄, 即使此账号是用于业务、宠物或其他内容的。</div>
           <Form.Item
@@ -90,9 +114,7 @@ const Register = () => {
           </Form.Item>
         </Form>
       </div>
-      <div className={style.footer}>
-        <Button className={style.footerButton} onClick={onClickNextStep}>下一步</Button>
-      </div>
+      <Footer onClickNextStep={onClickNextStep} disabled={footerButtonDisabled} />
     </div>
   );
 };
