@@ -1,7 +1,8 @@
 $twitterBlue: #1d9bf0;
 $twitterGray: #86818c;
+$twitterGrayLight: #cfd9de;
 .input {
-    border: solid 1px #cfd9de;
+    border: solid 1px $twitterGrayLight;
     height: 53px;
     border-radius: 5px;
     padding: 5px 10px;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -9,15 +9,15 @@ import calendarIcon from '../../assets/calendar.png';
  * 出生日期选择器
 */
 
-const DatePickerInput = ({
+const DatePickerInput = forwardRef(({
   value, onChange,
-}) => {
+}, ref) => {
   const [visible, setVisible] = useState(false);
   const onClickDatePicker = () => {
     setVisible(true);
   };
   return (
-    <>
+    <div ref={ref}>
       <DatePicker
         title="日期选择"
         visible={visible}
@@ -33,9 +33,9 @@ const DatePickerInput = ({
           <img src={calendarIcon} alt="datapicker icon" className={style.calendarIcon} />
         </div>
       </div>
-    </>
+    </div>
   );
-};
+});
 
 DatePickerInput.propTypes = {
   value: PropTypes.string,

@@ -12,7 +12,8 @@
         "jsx-a11y/click-events-have-key-events": 0,
         "react/jsx-filename-extension": [1, { "extensions": [".js"]}],
         "react/react-in-jsx-scope": 0,
-        "react/function-component-definition": 0
+        "react/function-component-definition": 0,
+        "import/no-named-as-default": 0
     },
     "env": {
         "browser": true
@@ -22,7 +23,9 @@
             "alias":{
                 "map": [
                     ["@components", "./src/components"],
-                    ["@assets", "./src/assets"]
+                    ["@assets", "./src/assets"],
+                    ["@utils", "./src/utils"],
+                    ["@services", "./src/services"]
                 ]
             }
         }
