@@ -1,16 +1,18 @@
 {
-    "user": [
-        {
-            "username": "test",
-            "password": "test",
-            "age": "23",
-            "address": "test"
-        },
-        {
-            "username": "test1",
-            "password": "test1",
-            "age": "23",
-            "address": "test1"
-        }
-    ]
+  "user": [
+    {
+      "password": "test",
+      "username": "fafdsa",
+      "tel": "13243214323",
+      "birthday": "20220924",
+      "id": 1
+    },
+    {
+      "password": "test",
+      "username": "fafdsa",
+      "tel": "13243214323",
+      "birthday": "20220924",
+      "id": 2
+    }
+  ]
 }

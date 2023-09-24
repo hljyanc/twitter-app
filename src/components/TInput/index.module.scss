@@ -1,0 +1,41 @@
+@import '../../common.module.scss';
+
+.tInput {
+    composes: input from '../../common.module.scss';
+    position: relative;
+}
+
+.tInputFocused {
+    composes: tInput;
+    border: solid 2px $twitterBlue;
+}
+
+.label {
+    position: relative;
+    top: 8px;
+    left: -2px;
+    color: #cecece;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+.labelFocused {
+    composes: label;
+    top: 0px;
+    color: $twitterBlue;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.labelRight {
+    float: right;
+}
+
+.inputItem {
+    height: 53px;
+}
+
+.inputItemFocused {
+    height: 20px;
+}
