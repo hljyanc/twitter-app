@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Toast } from 'antd-mobile';
 import Header from '@components/Header';
 import Show from '@components/Show';
 import { registerUser } from '@services/register';
@@ -27,6 +28,11 @@ const Register = () => {
       ...userInfo,
     });
     console.log(res);
+    if (res?.success) {
+      Toast.show('登录成功!');
+      return;
+    }
+    Toast.show('登录失败');
   };
   const onClickClose = () => {
     setStep(STEP.ONE);
