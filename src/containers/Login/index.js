@@ -2,12 +2,11 @@
 import {
   Button, Form, Dialog,
 } from 'antd-mobile';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import cookies from 'js-cookie';
 // import { useGoTo } from '@utils/hooks';
 // import { useAppContext } from '@utils/context';
 import TInput from '@components/TInput';
-import Header from '@components/Header';
 import { login } from '../../services/login';
 import style from './index.module.scss';
 
@@ -44,44 +43,41 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className={style.login}>
-        <div className={style.formTitle}>登录 Twitter</div>
-        <Form
-          form={form}
-          className={style.formContainer}
+    <div className={style.login}>
+      <div className={style.formTitle}>登录 Twitter</div>
+      <Form
+        form={form}
+        className={style.formContainer}
+      >
+        <Form.Item
+          name="username"
+          rules={[
+            { required: true, message: '用户名不能空' },
+          ]}
         >
-          <Form.Item
-            name="username"
-            rules={[
-              { required: true, message: '用户名不能空' },
-            ]}
-          >
-            <TInput label="用户名" />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            rules={[
-              { required: true, message: '密码不能空' },
-            ]}
-          >
-            <TInput label="密码" type="password" />
-          </Form.Item>
-          <Button className={style.footerButton} onClick={onSubmit}>
-            下一步
-          </Button>
-        </Form>
-        <div className={style.goToRegister}>
-          还没有账号?
-          {/* <Link
-            to="/register"
-          >
-            注册
-          </Link> */}
-        </div>
+          <TInput label="用户名" />
+        </Form.Item>
+        <Form.Item
+          name="password"
+          rules={[
+            { required: true, message: '密码不能空' },
+          ]}
+        >
+          <TInput label="密码" type="password" />
+        </Form.Item>
+        <Button className={style.footerButton} onClick={onSubmit}>
+          下一步
+        </Button>
+      </Form>
+      <div className={style.goToRegister}>
+        还没有账号?
+        <Link
+          to="/register"
+        >
+          注册
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 
