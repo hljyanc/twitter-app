@@ -1,11 +1,11 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import {
   Button, Form, Dialog,
 } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 // import cookies from 'js-cookie';
 // import { useGoTo } from '@utils/hooks';
-// import { useAppContext } from '@utils/context';
+import { useAppContext } from '@utils/context';
 import TInput from '@components/TInput';
 import { login } from '../../services/login';
 import style from './index.module.scss';
@@ -17,12 +17,12 @@ const Login = () => {
   const [form] = Form.useForm();
   // const go = useGoTo();
 
-  // const [, setStore] = useAppContext();
-  // useEffect(() => {
-  //   setStore({
-  //     closeHeaderHandler: null,
-  //   });
-  // }, []);
+  const [, setStore] = useAppContext();
+  useEffect(() => {
+    setStore({
+      closeHeaderHandler: null,
+    });
+  }, []);
 
   const onSubmit = async () => {
     const values = await form.validateFields();
