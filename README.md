@@ -24,11 +24,11 @@ service: const getUser = (params) => get('/user', params).then((res) => {
 json-server
 
 ## Five Steps to build React pages
-1. Divide UI design into components
-2. Use React to build a static page 
-3. decide UI states to use
-4. decide where to put each state
-5. 添加反向数据流
+第一步：将设计好的 UI 划分为组件层级
+第二步：用 React 创建一个静态版本
+第三步：确定 UI state 的最小（且完整）表示
+第四步：确定 state 放置的位置
+第五步：添加反向数据流
 
 ## 工程化配置信息:
 - craco.config.js: webpack setup alias
